@@ -22,8 +22,8 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem "slim"
-gem 'sprockets-es6'
-gem 'browserify-rails'
+# gem 'sprockets-es6'
+# gem 'browserify-rails'
 
 group :development, :test do
   gem 'byebug'

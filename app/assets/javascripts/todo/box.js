@@ -1,16 +1,16 @@
-import React from 'react'
-import { render } from 'react-dom'
+(function(app){
+  var Item = app.Item;
 
-import Item from './item';
+  var TodoBox = React.createClass({
+    render: function() {
+      return (
+        <ul className="todoBox">
+          <Item status="true" >Test description</Item>
+        </ul>
+      );
+    }
+  });
 
-var TodoBox = React.createClass({
-  render: function() {
-    return (
-      <ul className="todoBox">
-        Test
-      </ul>
-    );
-  }
-});
+  ReactDOM.render(<TodoBox />, $('#app-root')[0]); 
+})(app)
 
-render(<TodoBox />, $('#app-root')[0]);

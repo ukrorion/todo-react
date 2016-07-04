@@ -1,9 +1,13 @@
-import React from 'react'
+(function(app){
 
-export var Item = React.createClass({
-  render: function() {
-    return (
-      <li><input name="status" type="checkbox" /> Test</li>
-    );
-  }
-});
+  app.Item = React.createClass({
+    render: function() {
+      return (
+        <li className="listItem"><input name="status" type="checkbox" checked="{this.props.status}" />{this.props.children}</li>
+      );
+    }
+  });
+
+})(app)
+
+
