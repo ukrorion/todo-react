@@ -16,6 +16,16 @@ class TasksController < ApplicationController
     end
   end
 
+  def destroy
+    @task = Task.find params[:id]
+    if @task.destroy
+      byebug
+      respond_to do |format|
+        format.json { render json: @task }
+      end 
+    end
+  end
+
   private
     def task_params
       params.require(:task).permit(:description)

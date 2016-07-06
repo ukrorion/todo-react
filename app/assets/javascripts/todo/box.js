@@ -26,7 +26,7 @@ var TodoBox = React.createClass({
   render: function() {
     var todoList = this.state.data.map(function(task, index){
       return(
-        <Item status={task.status} key={index}>{task.description}</Item>
+        <Item status={task.status} key={index} id={task.id}>{task.description}</Item>
       );
     });
     return (

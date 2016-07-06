@@ -9,6 +9,7 @@ html
     = csrf_meta_tags
   body
     = yield
+    = javascript_include_tag 'todo/delete_button', type: "text/babel"
     = javascript_include_tag 'todo/form', type: "text/babel"
     = javascript_include_tag 'todo/item', type: "text/babel"
     = javascript_include_tag 'todo/box', type: "text/babel"
