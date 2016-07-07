@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :find_task, only: [:destroy, :update]
   def index
     respond_to do |format|
       format.json { render json: Task.all }
@@ -16,8 +17,15 @@ class TasksController < ApplicationController
     end
   end
 
+  def update
+    if @task.update_attribute(:status, !@task.status)
+      respond_to do |format|
+        format.json { render json: @task }
+      end 
+    end
+  end
+
   def destroy
-    @task = Task.find params[:id]
     if @task.destroy
       respond_to do |format|
         format.json { render json: @task }
@@ -28,6 +36,10 @@ class TasksController < ApplicationController
   private
     def task_params
       params.require(:task).permit(:description)
+    end
+
+    def find_task
+      @task = Task.find params[:id]
     end
 
   end

@@ -5,7 +5,17 @@ app.Item = React.createClass({
     return {status: this.props.status}
   },
   handleCheckbox: function(){
-
+    $.ajax({
+      url: '/tasks/'+this.props.id,
+      type: 'put',
+      dataType: 'json',
+      success: function(data){
+        this.setState({status: !this.state.status});
+      }.bind(this),
+      error: function(error){
+        console.log(error)
+      }.bind(this)
+    });
   },
   handleDeleteTask: function() {
     $.ajax({
@@ -30,3 +40,5 @@ app.Item = React.createClass({
     );
   }
 });
+
+// TODO fix issue with geting state of previous element's checkbox after deleting element.
