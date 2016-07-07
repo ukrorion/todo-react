@@ -5,12 +5,13 @@ var TodoBox = React.createClass({
   getInitialState: function() {
       return {data: []};
   },
-  handleDelete: function(data){
-    var index = this.state.data.findIndex(function(el){
-      return el.id == data.id
+  handleDelete: function(taskToDelete){
+    var indexToDelete = this.state.data.findIndex(function(el){
+      return el.id == taskToDelete.id
     });
-    this.state.data.splice(index,1);
-    this.forceUpdate();
+    var _data = this.state.data
+    _data.splice(indexToDelete,1);
+    this.setState({data:_data});
   },
   componentDidMount: function() {
     $.ajax({
