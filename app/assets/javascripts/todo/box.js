@@ -5,6 +5,13 @@ var TodoBox = React.createClass({
   getInitialState: function() {
       return {data: []};
   },
+  handleDelete: function(data){
+    var index = this.state.data.findIndex(function(el){
+      return el.id == data.id
+    });
+    this.state.data.splice(index,1);
+    this.forceUpdate();
+  },
   componentDidMount: function() {
     $.ajax({
       url: this.props.url,
@@ -26,9 +33,9 @@ var TodoBox = React.createClass({
   render: function() {
     var todoList = this.state.data.map(function(task, index){
       return(
-        <Item status={task.status} key={index} id={task.id}>{task.description}</Item>
+        <Item status={task.status} key={index} id={task.id} onDelete={this.handleDelete}>{task.description}</Item>
       );
-    });
+    }.bind(this));
     return (
       <div>
         <TodoForm onTaskSubmit={this.handleTaskSubmit} />
