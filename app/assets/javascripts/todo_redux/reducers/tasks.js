@@ -10,6 +10,9 @@ appRedux.Task = function(state, action){
       if(state.id !== action.id)
         return state;
       return _.assign({}, state, {status: !state.status});
+    case 'DELETE_TASK':
+      return state;
+
     default:
       return state;
   }
@@ -24,7 +27,9 @@ appRedux.Tasks = function(state, action){
     case 'TOGGLE_TASK':
       return state.map(function(st){
         return Task(st,action);
-      })
+      });
+    case 'DELETE_TASK':
+      return _.filter(state, function(obj){ return obj.id !== action.id});
     default:
       return state;
   }
