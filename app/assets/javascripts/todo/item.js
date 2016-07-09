@@ -1,16 +1,13 @@
 var DeleteButton = app.DeleteButton;
 
 app.Item = React.createClass({
-  getInitialState: function(){
-    return {status: this.props.status}
-  },
   handleCheckbox: function(){
     $.ajax({
       url: '/tasks/'+this.props.id,
       type: 'put',
       dataType: 'json',
       success: function(data){
-        this.setState({status: !this.state.status});
+        this.props.onChecked(data);
       }.bind(this),
       error: function(error){
         console.log(error)
@@ -32,13 +29,11 @@ app.Item = React.createClass({
   },
   render: function() {
     return (
-      <li className="listItem" ref={this.state.refer} >
-        <input name="status" type="checkbox" checked={this.state.status} onChange={this.handleCheckbox} />
+      <li className="listItem" >
+        <input name="status" type="checkbox" checked={this.props.status} onChange={this.handleCheckbox} />
         {this.props.children}
         <DeleteButton onClick={this.handleDeleteTask} />
       </li>
     );
   }
 });
-
-// TODO fix issue with geting state of previous element's checkbox after deleting element.
