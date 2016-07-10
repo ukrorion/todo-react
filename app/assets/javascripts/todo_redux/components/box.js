@@ -3,6 +3,13 @@ var Item = appRedux.Item;
 
 var nextIndex = 0;
 appRedux.TodoBox = React.createClass({
+  componentDidMount: function() {
+    store.dispatch({
+      type: 'FETCH_TASKS',
+      url: this.props.url,
+      store: store
+    });
+  },
   handleClick: function(){
     store.dispatch({
       type: 'ADD_TASK',

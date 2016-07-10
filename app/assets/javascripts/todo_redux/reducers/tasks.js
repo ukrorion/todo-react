@@ -1,3 +1,5 @@
+var store = appRedux.store;
+
 appRedux.Task = function(state, action){
   switch(action.type){
     case 'ADD_TASK':
@@ -22,6 +24,24 @@ var Task = appRedux.Task;
 appRedux.Tasks = function(state, action){
   state = (typeof state == "undefined" ? [] : state);
   switch(action.type){
+    case 'FETCH_TASKS':
+      $.ajax({
+        url: action.url,
+        dataType: 'json',
+        cache: false,
+        success: function(data){
+          action.store.dispatch({
+            type: 'TASKS_LOADED',
+            data: data
+          });
+        },
+        error: function(xhr, status, error){
+          console.log(error);
+        }
+      });
+      return state;
+    case 'TASKS_LOADED':
+      return action.data;
     case 'ADD_TASK':
       return _.concat(state, [Task(undefined, action)]);
     case 'TOGGLE_TASK':
