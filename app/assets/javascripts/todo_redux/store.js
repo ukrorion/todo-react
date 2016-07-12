@@ -1,0 +1,1 @@
+appRedux.store = Redux.createStore(appRedux.Tasks);

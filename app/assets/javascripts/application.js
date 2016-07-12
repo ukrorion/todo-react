@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require_self
 
-var app = {}
+var app = {};
+var appRedux = {};
