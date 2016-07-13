@@ -27,7 +27,39 @@ appRedux.BoxActions = {
         store.dispatch({type: 'ADD_TASK', data: data});
       },
       error: function(error){
+        console.log(error);
+      }
+    });
+  },
+  toggle_task: function(_this) {
+    $.ajax({
+      url: '/tasks/' + _this.props.id,
+      type: 'put',
+      dataType: 'json',
+      success: function(data){
+        store.dispatch({
+          type: 'TOGGLE_TASK',
+          data: data
+        });
+      },
+      error: function(error){
         console.log(error)
+      }
+    });
+  },
+  delete_task: function(_this) {
+    $.ajax({
+      url: '/tasks/'+_this.props.id,
+      type: 'delete',
+      dataType: 'json',
+      success: function(data){
+        store.dispatch({
+          type: 'DELETE_TASK',
+          data: data
+        });
+      },
+      error: function(error){
+        console.log(error);
       }
     });
   }

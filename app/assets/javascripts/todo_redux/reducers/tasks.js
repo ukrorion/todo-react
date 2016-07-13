@@ -3,18 +3,13 @@ var store = appRedux.store;
 appRedux.Task = function(state, action){
   switch(action.type){
     case 'ADD_TASK':
-      return {
-        id: action.data.id,
-        description: action.data.description,
-        status: action.data.status
-      };
+      return action.data
     case 'TOGGLE_TASK':
-      if(state.id !== action.id)
+      if(state.id !== action.data.id)
         return state;
-      return _.assign({}, state, {status: !state.status});
+      return _.assign({}, state, {status: action.data.status});
     case 'DELETE_TASK':
       return state;
-
     default:
       return state;
   }
@@ -33,7 +28,7 @@ appRedux.Tasks = function(state, action){
         return Task(st,action);
       });
     case 'DELETE_TASK':
-      return _.filter(state, function(obj){ return obj.id !== action.id});
+      return _.filter(state, function(obj){ return obj.id !== action.data.id});
     default:
       return state;
   }

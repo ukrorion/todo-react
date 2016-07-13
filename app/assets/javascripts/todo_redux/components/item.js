@@ -1,19 +1,11 @@
-var store = appRedux.store;
+var boxActions = appRedux.BoxActions; 
 
 appRedux.Item = React.createClass({
   handleChecked: function(){
-    store.dispatch({
-      type: 'TOGGLE_TASK',
-      id: this.props.id,
-      status: this.props.status,
-      description: this.props.children
-    });
+    boxActions.toggle_task(this);
   },
   handleDelete: function(){
-    store.dispatch({
-      type: 'DELETE_TASK',
-      id: this.props.id
-    });
+     boxActions.delete_task(this);
   },
   render: function() {
     return (
