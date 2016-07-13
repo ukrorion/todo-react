@@ -1,22 +1,12 @@
 var store = appRedux.store;
 var Item = appRedux.Item;
+var TodoForm = appRedux.TodoForm;
+var boxActions = appRedux.BoxActions;
 
 var nextIndex = 0;
 appRedux.TodoBox = React.createClass({
-  componentDidMount: function() {
-    store.dispatch({
-      type: 'FETCH_TASKS',
-      url: this.props.url,
-      store: store
-    });
-  },
-  handleClick: function(){
-    store.dispatch({
-      type: 'ADD_TASK',
-      description: "Some description here",
-      id: nextIndex++,
-      status: false
-    });
+  componentDidMount() {
+    boxActions.fetch_tasks(this)
   },
   render: function() {
     var todoList = this.props.data.map(function(task, index){
@@ -25,9 +15,11 @@ appRedux.TodoBox = React.createClass({
       );
     }.bind(this));
     return (
-      <div className="todoBox">
-        {todoList}
-        <input type="button" onClick={this.handleClick} value="Add Task"/>
+      <div className="app">
+        <TodoForm />
+        <div className="todoBox">
+          {todoList}
+        </div>
       </div>
     );
   }
