@@ -1,8 +1,12 @@
 class HomeController < ApplicationController
 
-  def index; end
+  def index;
+    render layout: 'without_babel'
+  end
 
-  def redux; end
+  def redux;
+    render layout: 'without_babel'
+  end
 
   def babel; end
   

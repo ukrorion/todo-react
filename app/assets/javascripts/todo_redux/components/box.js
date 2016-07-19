@@ -17,9 +17,9 @@ appRedux.TodoBox = React.createClass({
     return (
       <div className="app">
         <TodoForm />
-        <div className="todoBox">
+        <ul className="todoBox">
           {todoList}
-        </div>
+        </ul>
       </div>
     );
   }

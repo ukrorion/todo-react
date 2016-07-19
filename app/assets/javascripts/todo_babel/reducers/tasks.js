@@ -21,9 +21,9 @@ const Tasks = (state, action) => {
     case 'ADD_TASK':
       return state.concat([Task(undefined, action)]);
     case 'TOGGLE_TASK':
-      return state.map(st => { Task(st,action) });
+      return state.map(st => Task(st,action));
     case 'DELETE_TASK':
-      return state.filter(obj => { return obj.id !== action.data.id});
+      return state.filter(obj => obj.id !== action.data.id);
     default:
       return state;
   }

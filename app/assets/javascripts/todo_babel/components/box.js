@@ -2,28 +2,25 @@
 import React from 'react'
 import { BoxActions } from './../actions/todo_actions'
 import { Item } from './item'
+import TodoForm from './form'
 
 export const TodoBox = React.createClass({
   componentDidMount() {
     BoxActions.fetch_tasks(this)
   },
   render() {
-    // var todoList = this.props.data.map(function(task, index) {
-    //   return (
-    //     <Item status={task.status} key={index} id={task.id}>{task.description}</Item>
-    //   );
-    // }.bind(this));
-    var todoList = this.props.data.map(function(task, index){
+    var todoList = this.props.data.map((task, index) => {
       return(
         <Item status={task.status} key={index} id={task.id}>{task.description}</Item>
       );
-    }.bind(this));
+    });
 
     return (
       <div className="app">
-        <div className="todoBox">
+        <TodoForm />
+        <ul className="todoBox">
           {todoList}
-        </div>
+        </ul>
       </div>
     );
   }

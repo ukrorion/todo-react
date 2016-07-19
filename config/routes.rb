@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  get 'home/index' => 'home#index'
+  root 'home#index'
+  get 'home/babel' => 'home#babel', as: :babel
   get 'home/redux' => 'home#redux', as: :redux
-  root 'home#babel'
 
   resources :tasks
 
