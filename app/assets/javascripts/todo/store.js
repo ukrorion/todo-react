@@ -1,4 +1,10 @@
-import { createStore } from 'redux'
+import { createStore, combineReducers } from 'redux'
 import Tasks from './reducers/tasks'
+import Filter from './reducers/filter'
 
-export const Store = createStore(Tasks);
+const TodoApp = combineReducers({
+  Tasks,
+  Filter
+});
+
+export const Store = createStore(TodoApp);

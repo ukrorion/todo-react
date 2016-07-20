@@ -19,7 +19,7 @@ export const Item = React.createClass({
           {this.props.children}
         </div>
         <div className="col-lg-1">
-          <input type="button" value="Delete" onClick={this.handleDelete} className='btn btn-default btn-sm'/>
+          <input type="button" value="Delete" onClick={this.handleDelete} className='btn btn-danger btn-sm'/>
         </div>
       </li>
     );
