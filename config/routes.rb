@@ -4,8 +4,6 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
-  get 'home/babel' => 'home#babel', as: :babel
-  get 'home/redux' => 'home#redux', as: :redux
 
   resources :tasks
 
