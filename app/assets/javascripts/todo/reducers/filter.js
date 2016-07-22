@@ -1,11 +1,11 @@
 const Filter = (state='SHOW_ALL', action) => {
   switch(action.type){
-    case 'SET_DONE':
-      return state;
-    case 'SET_ALL':
-      return state;
-    case 'SET_NOT_DONE':
-      return state;
+    case 'SHOW_DONE':
+      return 'SHOW_DONE';
+    case 'SHOW_ALL':
+      return 'SHOW_ALL';
+    case 'SHOW_ACTIVE':
+      return 'SHOW_ACTIVE';
     default:
       return state;
   }

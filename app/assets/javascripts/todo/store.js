@@ -7,4 +7,6 @@ const TodoApp = combineReducers({
   Filter
 });
 
-export const Store = createStore(TodoApp);
+const Store = createStore(TodoApp);
+
+export default Store;

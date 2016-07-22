@@ -1,4 +1,4 @@
-import { Store } from './../store'
+import Store from './../store'
 
 let send_data = (url, request_type, action_name, data={}) => { 
   return $.ajax({
@@ -21,7 +21,7 @@ let send_data = (url, request_type, action_name, data={}) => {
 
 
 
-export const BoxActions = {
+const BoxActions = {
   fetch_tasks(self) {
     send_data(self.props.url, 'get', 'FETCH_TASKS');
   },
@@ -35,3 +35,5 @@ export const BoxActions = {
     send_data('/tasks/' + self.props.id, 'delete', 'DELETE_TASK');
   }
 }
+
+export default BoxActions;

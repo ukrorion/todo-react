@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { BoxActions } from './../actions/todo_actions'
+import BoxActions from './../actions/todo_actions'
 
 export default React.createClass({
   getInitialState() {
