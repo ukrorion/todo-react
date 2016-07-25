@@ -21,7 +21,7 @@ export default React.createClass({
   render(){
     return (
       <div className="row">
-        <div className="col-lg-5 col-lg-offset-1">
+        <div className="col-lg-12">
           <form onSubmit={this.handleSubmit}>
             <div className="input-group">
               <input type="text" placeholder="Enter something" value={this.state.description} onChange={this.handleDescriptionChange} className="form-control" />

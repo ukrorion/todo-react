@@ -25,25 +25,34 @@ export const TodoBox = React.createClass({
   render() {
     const {Tasks, Filter} = this.props
     const filteredTasks = useFilter(Tasks, Filter);
-    let todoList = filteredTasks.map((task, index) => {
-      return(
-        <Item status={task.status} key={index} id={task.id}>{task.description}</Item>
-      );
-    });
+
+    let todoList = '';
+    if (filteredTasks.length > 0){
+      todoList = filteredTasks.map((task, index) => {
+        return(
+          <Item status={task.status} key={index} id={task.id}>{task.description}</Item>
+        );
+      });
+    } else {
+      todoList = <h3>No tasks to display</h3>
+    }
+
 
     return (
       <div className="app row">
         <div className="col-lg-8 col-lg-offset-2">
           <TodoForm />
+          <div className="row">
+            <ul className="nav nav-tabs col-lg-12">
+              <FilterLink filter="SHOW_ALL" currentFilter={Filter}>Show all</FilterLink>
+              <FilterLink filter="SHOW_DONE" currentFilter={Filter}>Show done</FilterLink>
+              <FilterLink filter="SHOW_ACTIVE" currentFilter={Filter}>Show active</FilterLink>
+            </ul> 
+          </div>
           <ul className="todoBox">
             {todoList}
           </ul>
         </div>
-        <div className="col-lg-8 col-lg-offset-2">
-          <FilterLink filter="SHOW_ALL" currentFilter={Filter}>Shaw all</FilterLink> |
-          <FilterLink filter="SHOW_DONE" currentFilter={Filter}>Shaw done</FilterLink> |
-          <FilterLink filter="SHOW_ACTIVE" currentFilter={Filter}>Shaw active</FilterLink>
-        </div> 
       </div>
     );
   }

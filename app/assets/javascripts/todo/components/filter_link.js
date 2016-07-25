@@ -12,11 +12,9 @@ class FilterLink extends React.Component {
     });
   }
   render() {
-    if(this.props.currentFilter === this.props.filter) {
-      return <span>{this.props.children}</span>;
-    }
+    let active = this.props.currentFilter === this.props.filter ? 'active' : ''
     return (
-      <a href="#" onClick={this.handleClick.bind(this)} >{this.props.children}</a>
+      <li role="presentation" className={active}><a href="#" onClick={this.handleClick.bind(this)} >{this.props.children}</a></li>
     );
   }
 }
