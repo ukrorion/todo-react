@@ -1,5 +1,7 @@
 class TasksController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_task, only: [:destroy, :update]
+  
   def index
     respond_to do |format|
       format.json { render json: Task.all }
